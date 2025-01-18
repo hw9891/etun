@@ -145,7 +145,8 @@ export default {
 						return fetch(url, {
 						headers: request.headers,
 						method: request.method,
-						body: request.body
+						body: request.body,
+            			redirect: 'follow'
 					});
                 }
                 else {
