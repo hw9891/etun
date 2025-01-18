@@ -140,7 +140,7 @@ export default {
 							}
 					});
                 }
-				else if (re.test(reqPath)) {
+				else if (re.test(reqPath) == true) {
 					const url = new URL(request.url);
 					url.host = "sbcv.thx.one";
 						return fetch(url, {
