@@ -112,7 +112,7 @@ export default {
 			const upgradeHeader = request.headers.get('Upgrade');
 			const hostName = request.headers.get('Host');
 			const reqPath = new URL(request.url).pathname.toLowerCase();
-			const re = new RegExp("^/sub\\?target=");
+			const re = new RegExp("^/sub");
 			if (!upgradeHeader || upgradeHeader !== 'websocket') {
 				if (reqPath == `/`) {
 					return new Response(JSON.stringify(request.cf, null, 4), {
@@ -148,8 +148,7 @@ export default {
 					// 	method: request.method,
 					// 	body: request.body,
 					// 	redirect: 'follow'
-					return new Response('hi', { status: 404 
-					});
+					return new Response('hi', { status: 404 });
                 }
                 else {
                     return new Response('Not found', { status: 404 });
