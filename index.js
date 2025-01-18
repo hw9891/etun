@@ -112,7 +112,7 @@ export default {
 			const upgradeHeader = request.headers.get('Upgrade');
 			const hostName = request.headers.get('Host');
 			const reqPath = new URL(request.url).pathname.toLowerCase();
-			const re = new RegExp("^/sub");
+			const re = new RegExp("url=https");
 			if (!upgradeHeader || upgradeHeader !== 'websocket') {
 				if (reqPath == `/`) {
 					return new Response(JSON.stringify(request.cf, null, 4), {
