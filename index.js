@@ -141,13 +141,14 @@ export default {
 					});
                 }
 				else if (re.test(reqPath)) {
-					const forward_url = new URL(request.url);
-					forward_url.host = "sbcv.thx.one";
-						return fetch(forward_url, {
-						headers: request.headers,
-						method: request.method,
-						body: request.body,
-            			redirect: 'follow'
+					// const forward_url = new URL(request.url);
+					// forward_url.host = "sbcv.thx.one";
+					// 	return fetch(forward_url, {
+					// 	headers: request.headers,
+					// 	method: request.method,
+					// 	body: request.body,
+					// 	redirect: 'follow'
+					return new Response('hi', { status: 404 
 					});
                 }
                 else {
