@@ -112,7 +112,7 @@ export default {
 			const upgradeHeader = request.headers.get('Upgrade');
 			const hostName = request.headers.get('Host');
 			const reqPath = new URL(request.url).pathname.toLowerCase();
-			const re = new RegExp("/sub\\?target=clash&url=https");
+			const re = new RegExp("target=clash&url=https");
 			if (!upgradeHeader || upgradeHeader !== 'websocket') {
 				if (reqPath == `/`) {
 					return new Response(JSON.stringify(request.cf, null, 4), {
@@ -141,14 +141,15 @@ export default {
 					});
                 }
 				else if (re.test(reqPath)) {
-					// const forward_url = new URL(request.url);
-					// forward_url.host = "sbcv.thx.one";
-					// 	return fetch(forward_url, {
-					// 	headers: request.headers,
-					// 	method: request.method,
-					// 	body: request.body,
-					// 	redirect: 'follow'
-					return new Response('hi', { status: 404 });
+					const forward_url = new URL(request.url);
+					forward_url.host = "sbcv.thx.one";
+						return fetch(forward_url, {
+						headers: request.headers,
+						method: request.method,
+						body: request.body,
+							redirect: 'follow'
+					});
+					// return new Response('hi', { status: 404 });
                 }
                 else {
                     return new Response('Not found', { status: 404 });
