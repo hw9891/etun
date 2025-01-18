@@ -112,7 +112,8 @@ export default {
 			const upgradeHeader = request.headers.get('Upgrade');
 			const hostName = request.headers.get('Host');
 			const reqPath = new URL(request.url).pathname.toLowerCase();
-			const re = new RegExp("/sub?target=clash");
+			// const re = new RegExp("/sub?target=clash");
+			const re = /\/sub?target=clash/g;
 			if (!upgradeHeader || upgradeHeader !== 'websocket') {
 				if (reqPath == `/`) {
 					return new Response(JSON.stringify(request.cf, null, 4), {
@@ -140,7 +141,7 @@ export default {
 							}
 					});
                 }
-				else if (re.test(reqPath) == true) {
+				else if (re.test(reqPath)) {
 					const url = new URL(request.url);
 					url.host = "sbcv.thx.one";
 						return fetch(url, {
