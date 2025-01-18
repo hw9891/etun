@@ -140,16 +140,16 @@ export default {
 							}
 					});
                 }
-				else if (re.test(reqPath)) {
-					const url = new URL(request.url);
-					url.host = "sbcv.thx.one";
-						return fetch(url, {
-						headers: request.headers,
-						method: request.method,
-						body: request.body,
-            			redirect: 'follow'
-					});
-                }
+				// else if (re.test(reqPath)) {
+				// 	const url = new URL(request.url);
+				// 	url.host = "sbcv.thx.one";
+				// 		return fetch(url, {
+				// 		headers: request.headers,
+				// 		method: request.method,
+				// 		body: request.body,
+            	// 		redirect: 'follow'
+				// 	});
+                // }
                 else {
                     return new Response('Not found', { status: 404 });
                 }
