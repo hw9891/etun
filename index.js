@@ -4,6 +4,7 @@ import { connect } from 'cloudflare:sockets';
 
 let userID = '8efe49ec-963a-4b63-8808-f852efdf7f5f';
 let ws_path = '/d9dad81d119c6e';
+let ws_protocol = atob('dmxlc3M=');
 
 // Randomly select a proxy server from the pool
 const proxyIPs = [
@@ -139,7 +140,7 @@ export default {
 							}
 					});
                 }
-				else if ( re.test(reqPath)) {
+				else if (re.test(reqPath)) {
 					const url = new URL(request.url);
 					url.host = "sbcv.thx.one";
 						return fetch(url, {
@@ -715,7 +716,7 @@ async function handleUDPOutBound(webSocket, vlessResponseHeader, log) {
  * @returns {string}
  */
 function getConfig(userID, hostName) {
-	const protocol = 'vless';
+	const protocol = ws_protocol;
 	const vlessMain =
 		`${protocol}` +
 		`://${userID}@${hostName}:443` +
@@ -765,7 +766,7 @@ function GenSub(userID, hostName) {
   if (!hostName.includes('pages.dev')) {
     mainDomains.forEach(domain => {
 		Array.from(HttpPort).forEach((port) => {
-        const ProtocolHttp = `vless://${userID}@${domain}:${port}?encryption=none&security=none&fp=random&type=ws&host=${hostName}&path=${encodeURIComponent(ws_path)}#${domain}-HTTPS-${port}`;
+        const ProtocolHttp = `${ws_protocol}://${userID}@${domain}:${port}?encryption=none&security=none&fp=random&type=ws&host=${hostName}&path=${encodeURIComponent(ws_path)}#${domain}-HTTPS-${port}`;
         allUrls.push(ProtocolHttp);
       });
     });
@@ -774,7 +775,7 @@ function GenSub(userID, hostName) {
   // Generate main HTTPS URLs for all domains
   mainDomains.forEach(domain => {
     Array.from(HttpsPort).forEach((port) => {
-      const ProtocolHttps = `vless://${userID}@${domain}:${port}?encryption=none&security=tls&sni=${hostName}&fp=random&type=ws&host=${hostName}&path=${encodeURIComponent(ws_path)}#${domain}-HTTPS-${port}`;
+      const ProtocolHttps = `${ws_protocol}://${userID}@${domain}:${port}?encryption=none&security=tls&sni=${hostName}&fp=random&type=ws&host=${hostName}&path=${encodeURIComponent(ws_path)}#${domain}-HTTPS-${port}`;
       allUrls.push(ProtocolHttps);
     });
   });
