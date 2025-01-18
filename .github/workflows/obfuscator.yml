@@ -26,7 +26,7 @@ jobs:
 
       - name: Obfuscate code
         run: |
-          javascript-obfuscator index.js --output src/_worker.js \
+          javascript-obfuscator deploy.js --output src/_worker.js \
           --compact true \
           --control-flow-flattening true \
           --control-flow-flattening-threshold 1 \
