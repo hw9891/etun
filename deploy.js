@@ -711,7 +711,7 @@ function getConfig(userID, hostName) {
         `://${userID}@${hostName}:443` +
         `?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=${ws_path}#${hostName}`;
     const sublink = `https://${hostName}/sub/${userID}?format=clash`;
-    const clash_link = `https://sbcv.thx.one/sub?target=clash&url=${encodeURIComponent(`https://${hostName}/sub/${userID}?format=clash`)}&insert=false&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true`;
+    // const clash_link = `https://sbcv.thx.one/sub?target=clash&url=${encodeURIComponent(`https://${hostName}/sub/${userID}?format=clash`)}&insert=false&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true`;
     return `
 ################################################################
 v2ray
